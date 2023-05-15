@@ -1,4 +1,4 @@
-# Driving-Seven-Segment-Display
+# Interfacing-Seven-Segment-Display
 # 1.0 Abstract
 The aim of this project is to display the EN number(21485886) on a seven segment display. For this
 task the PIC16F877A microcontroller and drive/control LED Seven Segment Display MAX7221
