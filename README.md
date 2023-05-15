@@ -1,4 +1,4 @@
-# Seven-Segment-Display
+# Driving-Seven-Segment-Display
 # 1.0 Abstract
 The aim of this project is to display the EN number(21485886) on a seven segment display. For this
 task the PIC16F877A microcontroller and drive/control LED Seven Segment Display MAX7221
@@ -119,24 +119,36 @@ Components used:
       • Crystal oscillator
 # 5.0 Code Explanation
 ## Configuration Bit Settings
-  CONFIG  FOSC = HS             ; Oscillator Selection bits (HS oscillator)
-  CONFIG  WDTE = OFF            ; Watchdog Timer Enable bit (WDT disabled)
-  CONFIG  PWRTE = OFF           ; Power-up Timer Enable bit (PWRT disabled)
-  CONFIG  BOREN = OFF           ; Brown-out Reset Enable bit (BOR disabled)
-  CONFIG  LVP = OFF             ; Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit (RB3 is digital I/O, HV on MCLR must be used for programming)
-  CONFIG  CPD = OFF             ; Data EEPROM Memory Code Protection bit (Data EEPROM code protection off)
-  CONFIG  WRT = OFF             ; Flash Program Memory Write Enable bits (Write protection off; all program memory may be written to by EECON control)
-  CONFIG  CP = OFF              ; Flash Program Memory Code Protection bit (Code protection off)
 
-## Selection of registers
-   BSF STATUS, 5;Bank 1
-   BCF TRISB,1 ;CLK
-   BCF TRISB,2 ;CS
-   BCF TRISB,3;DLN  
-   BCF STATUS,5; Bank 0  
+  • CONFIG  FOSC = HS             ; Oscillator Selection bits (HS oscillator)
+  
+  • CONFIG  WDTE = OFF            ; Watchdog Timer Enable bit (WDT disabled)
+  
+  • CONFIG  PWRTE = OFF           ; Power-up Timer Enable bit (PWRT disabled)
+  
+  • CONFIG  BOREN = OFF           ; Brown-out Reset Enable bit (BOR disabled)
+  
+  • CONFIG  LVP = OFF             ; Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit (RB3 is digital I/O, HV on MCLR must be used for programming)
+  
+  • CONFIG  CPD = OFF             ; Data EEPROM Memory Code Protection bit (Data EEPROM code protection off)
+  
+  • CONFIG  WRT = OFF             ; Flash Program Memory Write Enable bits (Write protection off; all program memory may be written to by EECON control)
+  
+  • CONFIG  CP = OFF              ; Flash Program Memory Code Protection bit (Code protection off)
+
+## Selection of ports
+  • BSF STATUS, 5;Bank 1
+   
+  • BCF TRISB,1 ;CLK
+   
+  • BCF TRISB,2 ;CS
+   
+  • BCF TRISB,3;DLN  
+   
+  • BCF STATUS,5; Bank 0  
   
 ## Initialization of registers  
-    //Shutdown-register(0x0C)	Normal operation(0x00)
+### Shutdown-register(0x0C)	Normal operation(0x00)
     
     BCF PORTB,2;//CS-0 
     BCF PORTB,3 //DLN-0	    15
@@ -189,7 +201,7 @@ Components used:
     BCF PORTB,1
     BSF PORTB,2//CS-1
     
-    //Decode mode register(0x09)	Decode 0-7(0xFF)
+  ### Decode mode register(0x09)	Decode 0-7(0xFF)
     BCF PORTB,2   
     BCF PORTB,3//   15
     BSF PORTB,1
@@ -242,7 +254,7 @@ Components used:
     BSF PORTB,2    
    
     
-    //Intensity register(0xXA)	Maximum brightness(0xXF)
+  ### Intensity register(0xXA)	Maximum brightness(0xXF)
     BCF PORTB,2    
     BCF PORTB,3//   15
     BSF PORTB,1
@@ -294,7 +306,7 @@ Components used:
     BCF PORTB,1    
     BSF PORTB,2
     
-     //Scan limit register(0xXB)	Display digits 0-7(0x07)    
+  ### Scan limit register(0xXB)	Display digits 0-7(0x07)    
     BCF PORTB,2    
     BCF PORTB,3//   15
     BSF PORTB,1       
@@ -347,7 +359,7 @@ Components used:
     BSF PORTB,2 
       
  
-    //Display test register(0xXF)	Normal mode(0x00)    
+   ### Display test register(0xXF)	Normal mode(0x00)    
     BCF PORTB,2    
     BCF PORTB,3//	15
     BSF PORTB,1
@@ -399,8 +411,8 @@ Components used:
     BCF PORTB,1   
     BSF PORTB,2 
     
-    //DIGITS
-    //digit0 - 2  
+   ## Programming digits
+   #### Digit 0 - 2  
     BCF PORTB,2    
    
     BCF PORTB,3//   15
@@ -453,7 +465,7 @@ Components used:
     BCF PORTB,1    
     BSF PORTB,2   
     
-    //digit1 - 1    
+   ### Digit 1 - 1    
     BCF PORTB,2   
     BCF PORTB,3//   15
     BSF PORTB,1	
@@ -505,7 +517,7 @@ Components used:
     BCF PORTB,1  
     BSF PORTB,2    
     
-    //digit 2 - 4   
+   ### Digit 2 - 4   
     BCF PORTB,2   
     BCF PORTB,3//   15
     BSF PORTB,1
@@ -558,7 +570,7 @@ Components used:
     BCF PORTB,1    
     BSF PORTB,2    
     
-    //digit3 - 8 
+   ### Digit 3 - 8 
     BCF PORTB,2   
     BCF PORTB,3//   15
     BSF PORTB,1
@@ -610,7 +622,7 @@ Components used:
     BCF PORTB,1  
     BSF PORTB,2    
     
-    //digit4 - 5
+   ### Digit 4 - 5
     
     BCF PORTB,2    
     BCF PORTB,3//   15
@@ -663,7 +675,7 @@ Components used:
     BCF PORTB,1   
     BSF PORTB,2    
     
-    //digit5 - 8  
+   ### Digit 5 - 8  
     BCF PORTB,2  
     BCF PORTB,3//   15
     BSF PORTB,1
@@ -715,7 +727,7 @@ Components used:
     BCF PORTB,1  
     BSF PORTB,2    
     
-    //digit6 - 8
+   ### Digit 6 - 8
     BCF PORTB,2    
     BCF PORTB,3//   15
     BSF PORTB,1
@@ -767,7 +779,7 @@ Components used:
     BCF PORTB,1    
     BSF PORTB,2    
     
-    //digit7 - 6    
+   ### Digit 7 - 6    
     BCF PORTB,2    
     BCF PORTB,3//   15
     BSF PORTB,1
@@ -819,7 +831,9 @@ Components used:
     BSF PORTB,1 
     BSF PORTB,2
       
-GOTO MAIN
+ 
+
+
 # 6.0 Output
 
 <img width="915" alt="image" src="https://user-images.githubusercontent.com/124335793/216538236-23e644ec-e6db-4868-814d-b8f4f1545bef.png">
