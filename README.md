@@ -117,12 +117,8 @@ Components used:
       • 7 segment, 8 digit cathode display
     
       • Crystal oscillator
-# 5.0 Code
-  ; PIC16F877A Configuration Bit Settings
-
-; Assembly source line config statements
-
-; CONFIG
+# 5.0 Code Explanation
+## Configuration Bit Settings
   CONFIG  FOSC = HS             ; Oscillator Selection bits (HS oscillator)
   CONFIG  WDTE = OFF            ; Watchdog Timer Enable bit (WDT disabled)
   CONFIG  PWRTE = OFF           ; Power-up Timer Enable bit (PWRT disabled)
@@ -132,29 +128,16 @@ Components used:
   CONFIG  WRT = OFF             ; Flash Program Memory Write Enable bits (Write protection off; all program memory may be written to by EECON control)
   CONFIG  CP = OFF              ; Flash Program Memory Code Protection bit (Code protection off)
 
-// config statements should precede project file includes.
-#include <xc.inc>
-;--------initializing----------------  
-  
- //PSECT start, CLASS = CODE, DELTA=2
- start:
-    PAGESEL MAIN
-    GOTO MAIN
-    
-    PSECT CODE, DELTA=2
- 
- ;-----------end initializing---------
-
-     
+## Selection of registers
    BSF STATUS, 5;Bank 1
    BCF TRISB,1 ;CLK
    BCF TRISB,2 ;CS
    BCF TRISB,3;DLN  
    BCF STATUS,5; Bank 0  
   
-MAIN:  
-   
+## Initialization of registers  
     //Shutdown-register(0x0C)	Normal operation(0x00)
+    
     BCF PORTB,2;//CS-0 
     BCF PORTB,3 //DLN-0	    15
     BSF PORTB,1//CLK-1
