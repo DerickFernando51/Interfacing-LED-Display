@@ -423,7 +423,7 @@ Components used:
     BSF PORTB,2 
     
    ### Programming digits
-   ##### Digit 0 - 2  
+   #### Digit 0 - 2  
     BCF PORTB,2    
    
     BCF PORTB,3//   15
