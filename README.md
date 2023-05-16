@@ -855,4 +855,4 @@ The primary objective of this project was to display the EN number on a seven se
 achieved by programming the PIC16F877A microcontroller using the MPLAB IDE. The
 Proteus simulation software was used to construct the circuit and ensure that the required
 output is obtained. The MAX7221 display driver was used to interface the microcontroller to
-the display. This project provided a thorough understanding of  the structure of pic16F registers and ports, addressing modes and assembly programming concepts.
+the display. This project provided a thorough understanding of  the structure of PIC16F MCU registers and ports, addressing modes and assembly programming concepts.
