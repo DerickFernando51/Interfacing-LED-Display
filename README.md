@@ -4,6 +4,7 @@ The aim of this project is to display the EN number(21485886) on a seven segment
 task the PIC16F877A microcontroller and drive/control LED Seven Segment Display MAX7221
 was used. Assembler was used as the programming language. The circuit was constructed
 using Proteus simulation software.
+<br>
 
 ## 2.0 Introduction
 MAX7221 is a compact, serial input/output common-cathode display driver that interfaces
@@ -13,6 +14,7 @@ your microcontroller to drive the display. Seven segment displays are used for d
 bar graph displays, industrial controllers, panel meters and LED matrix displays. The seven
 segments are assigned letters from A to G. There is an optional decimal point that can be used
 to display non integer numbers.
+<br>
 
 ## 3.0 Objectives
 • Identify the features and functions of the Max 7221 display driver
@@ -22,6 +24,7 @@ to display non integer numbers.
 • Learn the principles of circuit design
 
 • Understand the applications of seven segment displays
+<br>
 
 ## 4.0 Methodology
 
@@ -45,13 +48,14 @@ to display non integer numbers.
 ➢ The DIG 0 -DIG 7 pins were also connected to the display as shown above.
 
 ➢ The ISET pin was connected to the VDD through a resistor
+<br>
 
 ### 4.2 Data format
 <img width="737" alt="image" src="https://user-images.githubusercontent.com/124335793/216534882-28e1904b-c917-43f8-80b5-96cfa9d47fad.png">
 
 The MAX7221 display has a 16 bit serial data format. The bits from 11 to 8 specify the address
 of the data. The next 8 bits contain the data.
-
+<br>
 ### 4.3 Initialization of registers
 <img width="759" alt="image" src="https://user-images.githubusercontent.com/124335793/216535346-d3c4bcdd-785a-43b3-af6a-107d4e05eb88.png">
 
@@ -66,14 +70,14 @@ The MAX7221 has 5 registers that should be initialized before data can be fed.
     • Scan limit register
 
     • Display test register
-
+<br>
 #### 4.3.1 Shutdown register
 <img width="914" alt="image" src="https://user-images.githubusercontent.com/124335793/216535669-dcd8efb0-f387-4e4c-a888-ba56af62b589.png">
 
   • The address of this register is (0xXC)
  
   • The normal operation mode was selected (0x01)
-  
+  <br>
 #### 4.3.2 Decode mode register
 
 <img width="914" alt="image" src="https://user-images.githubusercontent.com/124335793/216536289-ff7c1151-42fc-41b7-97bd-81f1a17fe484.png">
@@ -81,7 +85,7 @@ The MAX7221 has 5 registers that should be initialized before data can be fed.
 • The address of this register is (0xX9)
 
 • Code B decode for digits 7-0 was selected (0xFF)
-
+<br>
 #### 4.3.3 Display test register
 
 <img width="913" alt="image" src="https://user-images.githubusercontent.com/124335793/216536808-09dab430-84b9-48c4-8d29-a3eb28bc4c5c.png">
@@ -89,14 +93,14 @@ The MAX7221 has 5 registers that should be initialized before data can be fed.
 • The address of this register is (0xXF)
 
 • The normal operation mode was selected (0x00)
-
+<br>
 #### 4.3.4 Intensity register
 <img width="762" alt="image" src="https://user-images.githubusercontent.com/124335793/216537222-55ac608b-3764-48ce-b141-ca76ff50495e.png">
 
 • The address of this register is (0xXA)
 
 • The maximum brightness was selected (0xXF)
-
+<br>
 #### 4.3.5 Scan limit register
 <img width="760" alt="image" src="https://user-images.githubusercontent.com/124335793/216537447-5cad3092-1cb5-4298-a397-6bdedaf3e957.png">
 
@@ -104,7 +108,7 @@ The MAX7221 has 5 registers that should be initialized before data can be fed.
 
 • The option to display digits 0-7 was selected (0xX7)
 
-
+<br>
 ### 4.4 Circuit set up
 <img width="915" alt="image" src="https://user-images.githubusercontent.com/124335793/216537785-bfe2bfef-24ee-45bc-b5ec-c48cbab3d355.png">
 
@@ -117,35 +121,36 @@ Components used:
       • 7 segment, 8 digit cathode display
     
       • Crystal oscillator
+      <br>
 ## 5.0 Code Explanation
 ### Configuration Bit Settings
 
-  • CONFIG  FOSC = HS             ; Oscillator Selection bits (HS oscillator)
+ 	 • CONFIG  FOSC = HS             ; Oscillator Selection bits (HS oscillator)
   
-  • CONFIG  WDTE = OFF            ; Watchdog Timer Enable bit (WDT disabled)
+ 	 • CONFIG  WDTE = OFF            ; Watchdog Timer Enable bit (WDT disabled)
   
-  • CONFIG  PWRTE = OFF           ; Power-up Timer Enable bit (PWRT disabled)
+ 	 • CONFIG  PWRTE = OFF           ; Power-up Timer Enable bit (PWRT disabled)
   
-  • CONFIG  BOREN = OFF           ; Brown-out Reset Enable bit (BOR disabled)
+  	 • CONFIG  BOREN = OFF           ; Brown-out Reset Enable bit (BOR disabled)
   
-  • CONFIG  LVP = OFF             ; Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit (RB3 is digital I/O, HV on MCLR must be used for programming)
+ 	 • CONFIG  LVP = OFF             ; Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit (RB3 is digital I/O, HV on MCLR must be used for programming)
   
-  • CONFIG  CPD = OFF             ; Data EEPROM Memory Code Protection bit (Data EEPROM code protection off)
+  	 • CONFIG  CPD = OFF             ; Data EEPROM Memory Code Protection bit (Data EEPROM code protection off)
   
-  • CONFIG  WRT = OFF             ; Flash Program Memory Write Enable bits (Write protection off; all program memory may be written to by EECON control)
+ 	 • CONFIG  WRT = OFF             ; Flash Program Memory Write Enable bits (Write protection off; all program memory may be written to by EECON control)
   
-  • CONFIG  CP = OFF              ; Flash Program Memory Code Protection bit (Code protection off)
+  	 • CONFIG  CP = OFF              ; Flash Program Memory Code Protection bit (Code protection off)
 
 ### Selection of ports
-  • BSF STATUS, 5;Bank 1
+  	• BSF STATUS, 5;Bank 1
    
-  • BCF TRISB,1 ;CLK
+  	• BCF TRISB,1 ;CLK
    
-  • BCF TRISB,2 ;CS
+  	• BCF TRISB,2 ;CS
    
-  • BCF TRISB,3;DLN  
+  	• BCF TRISB,3;DLN  
    
-  • BCF STATUS,5; Bank 0  
+  	• BCF STATUS,5; Bank 0  
   
 ### Initialization of registers  
 #### Shutdown-register(0x0C)	Normal operation(0x00)
