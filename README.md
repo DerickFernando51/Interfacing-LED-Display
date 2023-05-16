@@ -24,7 +24,7 @@ to display non integer numbers.
 • Learn the principles of circuit design
 
 • Understand the applications of seven segment displays
-<br>
+<br><br>
 
 ## 4.0 Methodology
 
@@ -71,6 +71,7 @@ The MAX7221 has 5 registers that should be initialized before data can be fed.
 
     • Display test register
 <br>
+
 #### 4.3.1 Shutdown register
 <img width="914" alt="image" src="https://user-images.githubusercontent.com/124335793/216535669-dcd8efb0-f387-4e4c-a888-ba56af62b589.png">
 
@@ -108,7 +109,8 @@ The MAX7221 has 5 registers that should be initialized before data can be fed.
 
 • The option to display digits 0-7 was selected (0xX7)
 
-<br>
+<br><br>
+
 ### 4.4 Circuit set up
 <img width="915" alt="image" src="https://user-images.githubusercontent.com/124335793/216537785-bfe2bfef-24ee-45bc-b5ec-c48cbab3d355.png">
 
@@ -121,8 +123,12 @@ Components used:
       • 7 segment, 8 digit cathode display
     
       • Crystal oscillator
-      <br>
+     
+     
+<br>
+
 ## 5.0 Code Explanation
+
 ### Configuration Bit Settings
 
  	 • CONFIG  FOSC = HS             ; Oscillator Selection bits (HS oscillator)
